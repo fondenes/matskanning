@@ -1,0 +1,20 @@
+name: Bygg Mac-app
+on: workflow_dispatch
+jobs:
+  mac:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+      - run: |
+          mkdir build pakke
+          javac -encoding UTF-8 -d build *.java
+          jar --create --file pakke/Hovedprogram.jar --main-class Hovedprogram -C build .
+          jpackage --type dmg --name Hovedprogram --input pakke --main-jar Hovedprogram.jar --dest dist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Hovedprogram-mac
+          path: dist/*.dmg
