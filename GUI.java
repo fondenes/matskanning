@@ -4,7 +4,7 @@ import java.awt.event.*;
 
 public class GUI {
     Main main;
-    JFrame vindu = new JFrame("Varer");
+    JFrame vindu = new JFrame("Matvarer");
     JPanel hovedPanel = new JPanel();
     JPanel addPanel = new JPanel();
     JPanel displayPanel = new JPanel();
